@@ -2,9 +2,15 @@
 # File: site.yml - Example Consul site playbook
 
 - name: Assemble Consul cluster
-  hosts: consul_instances
+  hosts:
+    - consul_instances
+    #- localhost
   any_errors_fatal: true
   become: true
   become_user: root
+
+  vars_files:
+    - vars/main.yml
+
   roles:
     - ansible-consul
